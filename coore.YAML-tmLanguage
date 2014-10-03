@@ -9,6 +9,7 @@ patterns:
 - include: '#comment'
 - include: '#string'
 - include: '#number'
+- include: '#illegal'
 
 repository:  
 # the comment
@@ -23,6 +24,9 @@ repository:
     captures:
       '2': {name: string.quoted.single.coore}
 
+  illegal:
+    name: invalid.illegal.unrecognized.coore-tmLanguage
+    match: '[^\s}]'
   number:
    match: \d
 ...
