@@ -13,20 +13,29 @@ patterns:
 
 repository:  
 # the comment
-  comment: 
-    match: (?:^ *|\G *)((//).*)
-    captures:
-      '1': {name: comment.line.number-sign.yaml-tmlanguage}
-      '2': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+  comment:
+    patterns:
+    - name: comment.line.coore-tmlanguage
+      match: (?:^ *|\G *)((\/\/).*)
+      captures:
+        '1': {name: comment.line.number-sign.coore-tmlanguage}
 
+    - name: comment.multiLigne.coore-tmLanguage
+      begin: (?:^ *|\G *)(\/\*+?)
+      beginCaptures:
+        '1': {name: comment.line.number-sign.coore-tmlanguage}
+      end: (\*+\/)
+      patterns:
+        - name: comment.line.coore-tmLanguage
+          match: ([\w\s\W]*?)
+
+        
+        
   string:
+    name: string.quoted.single.coore
     match: (\")(\w*\b)(\")
-    captures:
-      '2': {name: string.quoted.single.coore}
 
   illegal:
     name: invalid.illegal.unrecognized.coore-tmLanguage
     match: '[^\s}]'
-  number:
-   match: \d
 ...
