@@ -1,0 +1,9 @@
+name: Comments
+scope: source.coore
+settings:
+  shellVariables:
+  - {name: TM_COMMENT_START, value: '// '}
+  - {name: TM_COMMENT_START_2, value: /*}
+  - {name: TM_COMMENT_END_2, value: '*/'}
+  - {name: TM_COMMENT_DISABLE_INDENT_2, value: 'yes'}
+uuid: d43b1cc8-377c-4b12-801d-3c6519e60377

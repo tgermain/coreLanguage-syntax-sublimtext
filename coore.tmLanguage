@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>coore</string>
+	</array>
+	<key>name</key>
+	<string>cOOreLanguage</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>#comment</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#string</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#number</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>comment</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.number-sign.yaml-tmlanguage</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.line.yaml-tmlanguage</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:^ *|\G *)((//).*)</string>
+		</dict>
+		<key>number</key>
+		<dict>
+			<key>match</key>
+			<string>\d</string>
+		</dict>
+		<key>string</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.coore</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\")(\w*\b)(\")</string>
+		</dict>
+	</dict>
+	<key>scopeName</key>
+	<string>source.coore</string>
+	<key>uuid</key>
+	<string>b78bdd86-88be-4e81-909e-046062712a9a</string>
+</dict>
+</plist>

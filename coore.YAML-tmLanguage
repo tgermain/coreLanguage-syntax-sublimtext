@@ -1,0 +1,28 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: cOOreLanguage
+scopeName: source.coore-tmLanguage
+fileTypes: [coore]
+uuid: b78bdd86-88be-4e81-909e-046062712a9a
+
+patterns:
+
+- include: '#comment'
+- include: '#string'
+- include: '#number'
+
+repository:  
+# the comment
+  comment: 
+    match: (?:^ *|\G *)((//).*)
+    captures:
+      '1': {name: comment.line.number-sign.yaml-tmlanguage}
+      '2': {name: punctuation.definition.comment.line.yaml-tmlanguage}
+
+  string:
+    match: (\")(\w*\b)(\")
+    captures:
+      '2': {name: string.quoted.single.coore}
+
+  number:
+   match: \d
+...
