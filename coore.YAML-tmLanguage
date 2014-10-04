@@ -8,28 +8,28 @@ patterns:
 
 - include: '#comment'
 - include: '#string'
-- include: '#number'
-- include: '#illegal'
+- include: '#class'
+- include: '#variableDef'
+- include: '#blankLine'
 
 repository:  
 # the comment
   comment:
     patterns:
     - name: comment.line.coore-tmlanguage
-      match: (?:^ *|\G *)((\/\/).*)
+      match: (?:^\s*)((\/\/).*)
       captures:
         '1': {name: comment.line.number-sign.coore-tmlanguage}
 
     - name: comment.multiLigne.coore-tmLanguage
-      begin: (?:^ *|\G *)(\/\*+?)
+      begin: (?:^\s*)(\/\*+?)
       beginCaptures:
         '1': {name: comment.line.number-sign.coore-tmlanguage}
       end: (\*+\/)
       patterns:
         - name: comment.line.coore-tmLanguage
           match: ([\w\s\W]*?)
-
-        
+  
         
   string:
     name: string.quoted.single.coore
@@ -38,4 +38,46 @@ repository:
   illegal:
     name: invalid.illegal.unrecognized.coore-tmLanguage
     match: '[^\s}]'
+
+  variableDef:
+    comment: 
+    begin: ^\s*?
+    end: \s*(;)$
+    endCaptures:
+      '1': {name: punctuation.definition.coore-tmLanguage}
+    patterns:
+      - include: '#typedVariable'
+
+  typedVariable:
+    comment: type identifiant
+    begin: \s*
+    end: \s+([A-Za-z_][0-9A-Za-z_]*)
+    endCaptures:
+      '1': {name: variable.language.coore-tmLanguage}
+      '2': {name: punctuation.definition.coore-tmLanguage}
+    patterns:
+      - include: '#type'
+
+  type:
+    comment: primitives types
+    name: storage.type.coore-tmLanguage
+    match: \b(int|char|bool|byte|void)\b
+
+
+  class:
+    begin: ^\s*(class)\s+([A-Za-z_][0-9A-Za-z_]*)<
+    beginCaptures:
+      '1': {name: entity.name.class.coore-tmLanguage}
+      '2': {name: entity.name.tag.coore-tmLanguage}
+    end: ()>\s+(?:{)
+    patterns:
+      - comment: type identifiant
+        begin: \s*
+        end: \s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?
+        endCaptures:
+          '1': {name: variable.parameter.function.coore-tmLanguage}
+          '2': {name: punctuation.definition.coore-tmLanguage}
+        patterns:
+          - include: '#type'
+
 ...

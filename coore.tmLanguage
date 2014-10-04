@@ -20,50 +20,194 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#number</string>
+			<string>#class</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#variableDef</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#blankLine</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>comment</key>
+		<key>class</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>^\s*(class)\s+([A-Za-z_][0-9A-Za-z_]*)&lt;</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>comment.line.number-sign.yaml-tmlanguage</string>
+					<string>entity.name.class.coore-tmLanguage</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.line.yaml-tmlanguage</string>
+					<string>entity.name.tag.coore-tmLanguage</string>
 				</dict>
 			</dict>
-			<key>match</key>
-			<string>(?:^ *|\G *)((//).*)</string>
+			<key>end</key>
+			<string>()&gt;\s+(?:{)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\s*</string>
+					<key>comment</key>
+					<string>type identifiant</string>
+					<key>end</key>
+					<string>\s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.function.coore-tmLanguage</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.coore-tmLanguage</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
-		<key>number</key>
+		<key>comment</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line.number-sign.coore-tmlanguage</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?:^\s*)((\/\/).*)</string>
+					<key>name</key>
+					<string>comment.line.coore-tmlanguage</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?:^\s*)(\/\*+?)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line.number-sign.coore-tmlanguage</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\*+\/)</string>
+					<key>name</key>
+					<string>comment.multiLigne.coore-tmLanguage</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>([\w\s\W]*?)</string>
+							<key>name</key>
+							<string>comment.line.coore-tmLanguage</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>illegal</key>
 		<dict>
 			<key>match</key>
-			<string>\d</string>
+			<string>[^\s}]</string>
+			<key>name</key>
+			<string>invalid.illegal.unrecognized.coore-tmLanguage</string>
 		</dict>
 		<key>string</key>
 		<dict>
-			<key>captures</key>
+			<key>match</key>
+			<string>(\")(\w*\b)(\")</string>
+			<key>name</key>
+			<string>string.quoted.single.coore</string>
+		</dict>
+		<key>type</key>
+		<dict>
+			<key>comment</key>
+			<string>primitives types</string>
+			<key>match</key>
+			<string>\b(int|char|bool|byte|void)\b</string>
+			<key>name</key>
+			<string>storage.type.coore-tmLanguage</string>
+		</dict>
+		<key>typedVariable</key>
+		<dict>
+			<key>begin</key>
+			<string>\s*</string>
+			<key>comment</key>
+			<string>type identifiant</string>
+			<key>end</key>
+			<string>\s+([A-Za-z_][0-9A-Za-z_]*)</string>
+			<key>endCaptures</key>
 			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.coore-tmLanguage</string>
+				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>string.quoted.single.coore</string>
+					<string>punctuation.definition.coore-tmLanguage</string>
 				</dict>
 			</dict>
-			<key>match</key>
-			<string>(\")(\w*\b)(\")</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#type</string>
+				</dict>
+			</array>
+		</dict>
+		<key>variableDef</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*?</string>
+			<key>comment</key>
+			<false/>
+			<key>end</key>
+			<string>\s*(;)$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.coore-tmLanguage</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#typedVariable</string>
+				</dict>
+			</array>
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.coore</string>
+	<string>source.coore-tmLanguage</string>
 	<key>uuid</key>
 	<string>b78bdd86-88be-4e81-909e-046062712a9a</string>
 </dict>

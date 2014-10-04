@@ -1,5 +1,9 @@
-^$$%µùù*%$^Illegal ligne !
 "quotedString"
+int truc;
 // one line comment
 /* multiline 
-comment */
+comment
+*/
+class truc<int machin,     bool truc, void chose> {
+//comment
+}
