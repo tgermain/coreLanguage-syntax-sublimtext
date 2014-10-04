@@ -1,9 +1,19 @@
-"quotedString"
-int truc;
+
 // one line comment
 /* multiline 
 comment
 */
+class truc<int chose,bool thing>{
+//Class code here
+ daCode !
+
+}
+
 class truc<int machin,     bool truc, void chose> {
 //comment
+"quotedString"
+int machin;
+
+
+int truc;
 }

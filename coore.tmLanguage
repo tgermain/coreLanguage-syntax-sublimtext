@@ -16,27 +16,15 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#string</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#class</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#variableDef</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#blankLine</string>
+			<string>#classDef</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>class</key>
+		<key>classDef</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(class)\s+([A-Za-z_][0-9A-Za-z_]*)&lt;</string>
+			<string>^\s*(class)\s+([A-Za-z_][0-9A-Za-z_]*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -51,34 +39,64 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>()&gt;\s+(?:{)</string>
+			<string>(})</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\s*</string>
+					<string>&lt;</string>
 					<key>comment</key>
-					<string>type identifiant</string>
+					<string>classArgs</string>
 					<key>end</key>
-					<string>\s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
+					<string>(&gt;\s+)</string>
+					<key>patterns</key>
+					<array>
 						<dict>
-							<key>name</key>
-							<string>variable.parameter.function.coore-tmLanguage</string>
+							<key>begin</key>
+							<string>\s*</string>
+							<key>comment</key>
+							<string>type identifiant</string>
+							<key>end</key>
+							<string>\s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.parameter.function.coore-tmLanguage</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.coore-tmLanguage</string>
+								</dict>
+							</dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#type</string>
+								</dict>
+							</array>
 						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.coore-tmLanguage</string>
-						</dict>
-					</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>({)</string>
+					<key>comment</key>
+					<string>classDecl</string>
+					<key>end</key>
+					<string>(?:})</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#type</string>
+							<string>#comment</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#variableDef</string>
 						</dict>
 					</array>
 				</dict>
@@ -207,7 +225,7 @@
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.coore-tmLanguage</string>
+	<string>source.coore</string>
 	<key>uuid</key>
 	<string>b78bdd86-88be-4e81-909e-046062712a9a</string>
 </dict>
