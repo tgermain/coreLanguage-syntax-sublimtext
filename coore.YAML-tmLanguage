@@ -53,9 +53,9 @@ repository:
       '1': {name: variable.language.coore-tmLanguage}
       '2': {name: punctuation.definition.coore-tmLanguage}
     patterns:
-      - include: '#type'
+      - include: '#primitifType'
 
-  type:
+  primitifType:
     comment: primitives types
     name: storage.type.coore-tmLanguage
     match: \b(int|char|bool|byte|void)\b
@@ -79,7 +79,7 @@ repository:
             '1': {name: variable.parameter.function.coore-tmLanguage}
             '2': {name: punctuation.definition.coore-tmLanguage}
           patterns:
-            - include: '#type'
+            - include: '#primitifType'
       - comment: classDecl
         begin: ({)
         end: (?:})
