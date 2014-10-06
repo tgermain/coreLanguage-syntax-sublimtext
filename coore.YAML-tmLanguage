@@ -13,18 +13,18 @@ repository:
 # the comment
   comment:
     patterns:
-    - name: comment.line.coore-tmlanguage
+    - name: comment.line.coore
       match: (?:^\s*)((\/\/).*)
       captures:
-        '1': {name: comment.line.number-sign.coore-tmlanguage}
+        '1': {name: comment.line.number-sign.coore}
 
-    - name: comment.multiLigne.coore-tmLanguage
-      begin: (?:^\s*)(\/\*+?)
+    - name: comment.multiLigne.coore
+      begin: (?:^\s*)(\(\*+?)
       beginCaptures:
-        '1': {name: comment.line.number-sign.coore-tmlanguage}
-      end: (\*+\/)
+        '1': {name: comment.line.number-sign.coore}
+      end: (\*+\))
       patterns:
-        - name: comment.line.coore-tmLanguage
+        - name: comment.line.coore
           match: ([\w\s\W]*?)
   
         
@@ -33,7 +33,7 @@ repository:
     match: (\")(\w*\b)(\")
 
   illegal:
-    name: invalid.illegal.unrecognized.coore-tmLanguage
+    name: invalid.illegal.unrecognized.coore
     match: '[^\s}]'
 
   variableDef:
@@ -41,7 +41,7 @@ repository:
     begin: ^\s*?
     end: \s*(;)$
     endCaptures:
-      '1': {name: punctuation.definition.coore-tmLanguage}
+      '1': {name: punctuation.definition.coore}
     patterns:
       - include: '#typedVariable'
 
@@ -50,22 +50,23 @@ repository:
     begin: \s*
     end: \s+([A-Za-z_][0-9A-Za-z_]*)
     endCaptures:
-      '1': {name: variable.language.coore-tmLanguage}
-      '2': {name: punctuation.definition.coore-tmLanguage}
+      '1': {name: variable.language.coore}
+      '2': {name: punctuation.definition.coore}
     patterns:
       - include: '#primitifType'
 
   primitifType:
     comment: primitives types
-    name: storage.type.coore-tmLanguage
+    name: storage.type.coore
     match: \b(int|char|bool|byte|void)\b
 
 
   classDef:
+    name: meta.class.coore
     begin: ^\s*(class)\s+([A-Za-z_][0-9A-Za-z_]*)
     beginCaptures:
-      '1': {name: entity.name.class.coore-tmLanguage}
-      '2': {name: entity.name.tag.coore-tmLanguage}
+      '1': {name: entity.name.class.coore}
+      '2': {name: entity.name.tag.coore}
     end: (})
     patterns:
       - comment: classArgs
@@ -76,8 +77,8 @@ repository:
           begin: \s*
           end: \s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?
           endCaptures:
-            '1': {name: variable.parameter.function.coore-tmLanguage}
-            '2': {name: punctuation.definition.coore-tmLanguage}
+            '1': {name: variable.parameter.function.coore}
+            '2': {name: punctuation.definition.coore}
           patterns:
             - include: '#primitifType'
       - comment: classDecl
