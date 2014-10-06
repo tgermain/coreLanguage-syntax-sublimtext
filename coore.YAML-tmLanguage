@@ -69,8 +69,8 @@ repository:
     end: (})
     patterns:
       - comment: classArgs
-        begin: <
-        end: (>\s+)
+        begin: \(
+        end: (\)\s+)
         patterns:
         - comment: type identifiant
           begin: \s*
