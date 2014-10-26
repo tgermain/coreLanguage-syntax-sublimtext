@@ -1,0 +1,126 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: coreLanguage
+scopeName: source.core
+fileTypes: [core]
+uuid: b78bdd86-88be-4e81-909e-046062712a9a
+
+patterns:
+
+- include: '#comment'
+- include: '#embeddedCCode'
+- include: '#resetTask'
+- include: '#taskDef'
+- include: '#idleTask'
+
+
+repository:  
+
+# the comment
+  comment:
+    patterns:
+    - name: comment.line.core
+      match: (?:\s*)((\/\/).*)
+      captures:
+        '1': {name: comment.line.number-sign.core}
+    - name: comment.block.core
+      begin: (?:\s*)(\(\*+?)
+      beginCaptures:
+        '1': {name: comment.line.number-sign.core}
+      end: (\*+\))
+      patterns:
+        - name: comment.line.core
+          match: ([\w\s\W]*?)
+
+  embeddedCCode:
+    name: Cembedded.core
+    begin: (?:^\s*)(#>)
+    beginCaptures:
+      '1': {name: string.core}
+    end: (<#)
+    endCaptures:
+      '1': {name: string.core}
+    patterns:
+      - include: source.c
+
+  string:
+    name: string.quoted.single.core
+    match: (\")(\w*\b)(\")
+
+  illegal:
+    name: invalid.illegal.unrecognized.core
+    match: '[^\s}]'
+
+  primitifType:
+    comment: primitives types
+    name: storage.type.core
+    match: \b(int|char|bool|byte|void)\b
+
+  resetTask:
+    name: resetTask.core
+    begin: ^\s*(Reset)(?:\s*)\{(?:\s*)$
+    beginCaptures:
+        '1': {name: keyword.core}
+    end: (?:\s*)\}(?:\s*)$
+    patterns:
+      - include: '#embeddedCCode'
+      - include: '#comm'
+      - include: '#asyncCall'
+      - include: '#syncCall'
+
+  idleTask:
+    name: idleTask.core
+    begin: ^\s*(Idle)(?:\s*)\{(?:\s*)$
+    beginCaptures:
+        '1': {name: keyword.core}
+    end: (?:\s*)\}(?:\s*)$
+    patterns:
+      - include: '#embeddedCCode'
+      - include: '#comm'
+      - include: '#asyncCall'
+      - include: '#syncCall'
+
+  asyncCall:
+    name: asyncCall.core
+    begin: (async) ((after) (\d+(s|ms|us)) )?((before) (\d+(s|ms|us)) )?(?:([A-Za-z_][0-9A-Za-z_]*))\(
+    beginCaptures:
+      '1': {name: entity.name.class.core}
+      '4': {name: constant.numeric.time.core}
+      '8': {name: constant.numeric.time.core}
+      '10': {name: entity.name.tag.core}
+    end: \);
+    patterns:
+      - include: source.c
+
+  syncCall:
+    name: syncCall.core
+    begin: (sync) ([A-Za-z_][0-9A-Za-z_]*)\(
+    beginCaptures:
+      '1': {name: entity.name.class.core}
+      '2': {name: entity.name.tag.core}
+    end: \);
+    patterns:
+      - include: source.c
+
+  taskDef:
+    name: meta.class.task.core
+    begin: ^\s*(Task)\s+([A-Za-z_][0-9A-Za-z_]*)
+    beginCaptures:
+      '1': {name: entity.name.class.core}
+      '2': {name: entity.name.tag.core}
+    end: (\{)
+    patterns:
+      - comment: classArgs
+        begin: \(
+        end: (\)\s*)
+        patterns:
+          - comment: type identifiant
+            name: meta.class.parameters.core
+            begin: \s*
+            end: \s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?
+            endCaptures:
+              '1': {name: variable.parameter.function.core}
+              '2': {name: punctuation.definition.core}
+            patterns:
+              - include: source.c
+              - include: '#comment'
+...

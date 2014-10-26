@@ -1,5 +1,5 @@
 name: Comments
-scope: source.coore
+scope: source.core
 settings:
   shellVariables:
   - name: TM_COMMENT_START

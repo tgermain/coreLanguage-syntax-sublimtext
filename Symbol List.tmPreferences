@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol List</string>
 	<key>scope</key>
-	<string>source.coore entity.name.tag.coore, source.coore meta.class.coore</string>
+	<string>source.core meta.class.task.core, source.core meta.class.core</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

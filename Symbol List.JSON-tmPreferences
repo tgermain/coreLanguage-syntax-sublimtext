@@ -1,0 +1,8 @@
+{
+    "uuid": "b7d4be17-a5c4-4fc7-8a6c-eda2e5623c29", 
+    "settings": {
+        "showInSymbolList": 1
+    }, 
+    "name": "Symbol List", 
+    "scope": "source.core meta.class.task.core,source.core asyncCall.core,source.core syncCall.core"
+}

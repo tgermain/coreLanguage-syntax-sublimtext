@@ -1,4 +1,4 @@
 name: Symbol List
-scope: source.coore entity.name.tag.coore, source.coore meta.class.coore
+scope: source.core meta.class.task.core,source.core asyncCall.core,source.core syncCall.core
 settings: {showInSymbolList: 1}
 uuid: b7d4be17-a5c4-4fc7-8a6c-eda2e5623c29

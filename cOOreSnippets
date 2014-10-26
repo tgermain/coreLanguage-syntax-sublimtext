@@ -1,0 +1,22 @@
+  classDef:
+    name: meta.class.core
+    begin: ^\s*(class)\s+([A-Za-z_][0-9A-Za-z_]*)
+    beginCaptures:
+      '1': {name: entity.name.class.core}
+      '2': {name: entity.name.tag.core}
+    end: (\{)
+    patterns:
+      - comment: classArgs
+        begin: \(
+        end: (\)\s+)
+        patterns:
+          - comment: type identifiant
+            name: meta.class.parameters.core
+            begin: \s*
+            end: \s+([A-Za-z_][0-9A-Za-z_]*)(\s*, )?
+            endCaptures:
+              '1': {name: variable.parameter.function.core}
+              '2': {name: punctuation.definition.core}
+            patterns:
+              - include: '#primitifType'
+              - include: '#comment'

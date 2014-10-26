@@ -1,19 +1,46 @@
 
+//comment;
+
+class machin(int chose) {
+	//Class code here
+	
+
+}
+
+#>
+#include "marteau.h"
+int a=3;
+if 23<a{
+
+	}else{
+
+	}
+<#
+
 // one line comment
-/* multiline 
-comment
-*/
-class truc<int chose,bool thing>{
-//Class code here
- daCode !
+(* multiline 
+comment *)
+int truc
+int machin
+class truc(int machin, bool truc, void chose) {
+#>
+#include "marteau.h"
+int a=3;
+if 23<a{
+
+	}else{
+
+	}
+<#
+//test
 
 }
 
-class truc<int machin,     bool truc, void chose> {
-//comment
-"quotedString"
+bool chose
+class machin(int machin, bool truc, void chose) {
+
 int machin;
-
-
-int truc;
 }
+
+
+
