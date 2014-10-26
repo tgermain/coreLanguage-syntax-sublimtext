@@ -112,36 +112,36 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>comment.line.number-sign.coore-tmlanguage</string>
+							<string>comment.line.number-sign.coore</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?:^\s*)((\/\/).*)</string>
 					<key>name</key>
-					<string>comment.line.coore-tmlanguage</string>
+					<string>comment.line.coore</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?:^\s*)(\/\*+?)</string>
+					<string>(?:^\s*)(\(\*+?)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>comment.line.number-sign.coore-tmlanguage</string>
+							<string>comment.line.number-sign.coore</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\*+\/)</string>
+					<string>(\*+\))</string>
 					<key>name</key>
-					<string>comment.multiLigne.coore-tmLanguage</string>
+					<string>comment.multiLigne.coore</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
 							<string>([\w\s\W]*?)</string>
 							<key>name</key>
-							<string>comment.line.coore-tmLanguage</string>
+							<string>comment.line.coore</string>
 						</dict>
 					</array>
 				</dict>
@@ -152,7 +152,16 @@
 			<key>match</key>
 			<string>[^\s}]</string>
 			<key>name</key>
-			<string>invalid.illegal.unrecognized.coore-tmLanguage</string>
+			<string>invalid.illegal.unrecognized.coore</string>
+		</dict>
+		<key>primitifType</key>
+		<dict>
+			<key>comment</key>
+			<string>primitives types</string>
+			<key>match</key>
+			<string>\b(int|char|bool|byte|void)\b</string>
+			<key>name</key>
+			<string>storage.type.coore</string>
 		</dict>
 		<key>string</key>
 		<dict>
@@ -160,15 +169,6 @@
 			<string>(\")(\w*\b)(\")</string>
 			<key>name</key>
 			<string>string.quoted.single.coore</string>
-		</dict>
-		<key>type</key>
-		<dict>
-			<key>comment</key>
-			<string>primitives types</string>
-			<key>match</key>
-			<string>\b(int|char|bool|byte|void)\b</string>
-			<key>name</key>
-			<string>storage.type.coore-tmLanguage</string>
 		</dict>
 		<key>typedVariable</key>
 		<dict>
@@ -183,19 +183,19 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>variable.language.coore-tmLanguage</string>
+					<string>variable.language.coore</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.coore-tmLanguage</string>
+					<string>punctuation.definition.coore</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#type</string>
+					<string>#primitifType</string>
 				</dict>
 			</array>
 		</dict>
@@ -212,7 +212,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.coore-tmLanguage</string>
+					<string>punctuation.definition.coore</string>
 				</dict>
 			</dict>
 			<key>patterns</key>

@@ -7,6 +7,7 @@ uuid: b78bdd86-88be-4e81-909e-046062712a9a
 patterns:
 
 - include: '#comment'
+- include: '#embeddedCCode'
 - include: '#classDef'
 
 repository:  
@@ -26,6 +27,14 @@ repository:
       patterns:
         - name: comment.line.coore
           match: ([\w\s\W]*?)
+
+  embeddedCCode:
+    name: Cembedded.coore
+    begin: (?:^\s*)(#>)
+    end: (?:^\s*)(<#)
+    patterns:
+      - include: source.c
+
   
         
   string:
