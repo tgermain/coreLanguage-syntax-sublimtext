@@ -1,17 +1,44 @@
-cOOreLanguage-syntax-sublimtext
+coreLanguage-syntax-sublimtext
 ===============================
 
-cOOre language syntax and snippet for sublime text
+core language syntax and snippet for sublime text
 
 
 TODO
 -----
-- Complete grammar
-  - core syntax more than cOOre in fact
+- understand how the symbolList definition work
 - Snippets, MORE snippets
-- symbol list
 
-TOLOOK
+
+Done but not perfect
 ----
-
 - embedding C code highLighting
+
+
+
+Grammar supported (yet):
+----
+```js
+core:
+  | top*
+top:
+  | "Task" ID ( C-params ) { stmt* }
+  | "Reset" { stmt* }   
+              
+stmt:
+  | #> C-code <#                                  
+  | "async" after? before? ID ( C-params ) ;             
+  | "sync" ID ( C-params ) ;
+  
+after:
+  | "after" time                              
+
+before:
+  | "before" time          
+
+time:
+  | INTVAL tunit?
+
+tuint:
+  | "us" | "ms" | "s"    
+  ```
