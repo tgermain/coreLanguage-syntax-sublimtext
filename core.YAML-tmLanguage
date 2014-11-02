@@ -11,6 +11,8 @@ patterns:
 - include: '#resetTask'
 - include: '#taskDef'
 - include: '#idleTask'
+- include: '#asyncCall'
+- include: '#syncCall'
 
 
 repository:  
