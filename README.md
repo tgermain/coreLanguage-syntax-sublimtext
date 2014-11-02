@@ -1,7 +1,9 @@
 coreLanguage-syntax-sublimtext
 ===============================
 
-core language syntax and snippet for sublime text
+core language syntax and snippet for sublime text.
+
+This package use the plugin [AAAPackageDev](https://github.com/SublimeText/AAAPackageDev) for developping grammar easily.
 
 
 TODO
@@ -42,3 +44,14 @@ time:
 tuint:
   | "us" | "ms" | "s"    
   ```
+
+Installation :
+----
+In sublim text menu : 
+`Preferences > browse Packages ...`
+(on linux it lead you to `~/.config/sublime-text-3/Packages/`)
+Then
+```bash
+cd User
+git clone git@github.com:tgermain/coreLanguage-syntax-sublimtext.git
+```
